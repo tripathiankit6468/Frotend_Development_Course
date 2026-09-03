@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Practice Form</title>
+</head>
+<body>
+
+    <h1>User Registration Practice Form</h1>
+    <p>Use this form to practice HTML form structure, attributes, CSS styling, or JavaScript event handling.</p>
+
+    <hr>
+
+    <form action="/submit-endpoint" method="POST" enctype="multipart/form-data">
+
+        <!-- Personal Information Section -->
+        <fieldset>
+            <legend><strong>Personal Information</strong></legend>
+
+            <!-- Text Input -->
+            <p>
+                <label for="fullName">Full Name:</label><br>
+                <input type="text" id="fullName" name="fullName" placeholder="John Doe" required autofocus>
+            </p>
+
+            <!-- Email Input -->
+            <p>
+                <label for="email">Email Address:</label><br>
+                <input type="email" id="email" name="email" placeholder="example@mail.com" required>
+            </p>
+
+            <!-- Password Input -->
+            <p>
+                <label for="password">Password:</label><br>
+                <input type="password" id="password" name="password" minlength="8" required>
+            </p>
+
+            <!-- Telephone Input -->
+            <p>
+                <label for="phone">Phone Number:</label><br>
+                <input type="tel" id="phone" name="phone" placeholder="123-456-7890">
+            </p>
+
+            <!-- Date Input -->
+            <p>
+                <label for="dob">Date of Birth:</label><br>
+                <input type="date" id="dob" name="dob">
+            </p>
+
+            <!-- Number Input -->
+            <p>
+                <label for="age">Age:</label><br>
+                <input type="number" id="age" name="age" min="18" max="100" value="25">
+            </p>
+
+            <!-- Radio Buttons (Single Choice) -->
+            <p>
+                <label>Gender:</label><br>
+                <input type="radio" id="male" name="gender" value="male">
+                <label for="male">Male</label><br>
+
+                <input type="radio" id="female" name="gender" value="female">
+                <label for="female">Female</label><br>
+
+                <input type="radio" id="other" name="gender" value="other">
+                <label for="other">Other</label>
+            </p>
+        </fieldset>
+
+        <br>
+
+        <!-- Preferences & Profile Section -->
+        <fieldset>
+            <legend><strong>Preferences & Profile</strong></legend>
+
+            <!-- Dropdown Select -->
+            <p>
+                <label for="role">Primary Role:</label><br>
+                <select id="role" name="role" required>
+                    <option value="" disabled selected>Select your role</option>
+                    <option value="developer">Developer</option>
+                    <option value="designer">Designer</option>
+                    <option value="analyst">Data Analyst</option>
+                    <option value="student">Student</option>
+                </select>
+            </p>
+
+            <!-- Datalist (Input with Autocomplete Suggestions) -->
+            <p>
+                <label for="country">Country (Autocomplete Practice):</label><br>
+                <input list="countries" id="country" name="country" placeholder="Type to search...">
+                <datalist id="countries">
+                    <option value="United States">
+                    <option value="India">
+                    <option value="United Kingdom">
+                    <option value="Canada">
+                    <option value="Germany">
+                </datalist>
+            </p>
+
+            <!-- Checkboxes (Multiple Choice) -->
+            <p>
+                <label>Skills / Interests:</label><br>
+                <input type="checkbox" id="skill1" name="skills" value="html">
+                <label for="skill1">HTML & CSS</label><br>
+
+                <input type="checkbox" id="skill2" name="skills" value="javascript">
+                <label for="skill2">JavaScript</label><br>
+
+                <input type="checkbox" id="skill3" name="skills" value="python">
+                <label for="skill3">Python</label><br>
+
+                <input type="checkbox" id="skill4" name="skills" value="sql">
+                <label for="skill4">SQL & Databases</label>
+            </p>
+
+            <!-- Range Input (Slider) -->
+            <p>
+                <label for="experience">Experience Level (1 to 10):</label><br>
+                <input type="range" id="experience" name="experience" min="1" max="10" value="5">
+            </p>
+
+            <!-- File Upload Input -->
+            <p>
+                <label for="resume">Upload Profile Picture / Resume:</label><br>
+                <input type="file" id="resume" name="resume" accept=".pdf, .png, .jpg">
+            </p>
+
+            <!-- Color Input -->
+            <p>
+                <label for="favoriteColor">Favorite Theme Color:</label><br>
+                <input type="color" id="favoriteColor" name="favoriteColor" value="#3b82f6">
+            </p>
+
+            <!-- Textarea (Multi-line Input) -->
+            <p>
+                <label for="bio">Short Bio:</label><br>
+                <textarea id="bio" name="bio" rows="4" cols="50" placeholder="Tell us a bit about yourself..."></textarea>
+            </p>
+        </fieldset>
+
+        <br>
+
+        <!-- Terms and Actions Section -->
+        <fieldset>
+            <legend><strong>Confirmation</strong></legend>
+
+            <!-- Read-only / Disabled Input Practice -->
+            <p>
+                <label for="referralCode">Referral Code (Read-Only):</label><br>
+                <input type="text" id="referralCode" name="referralCode" value="PRACTICE2026" readonly>
+            </p>
+
+            <!-- Required Single Checkbox -->
+            <p>
+                <input type="checkbox" id="terms" name="terms" required>
+                <label for="terms">I agree to the Terms and Conditions</label>
+            </p>
+
+            <!-- Buttons -->
+            <p>
+                <button type="submit">Submit Form</button>
+                <button type="reset">Reset Form</button>
+            </p>
+        </fieldset>
+
+    </form>
+
+</body>
+</html>

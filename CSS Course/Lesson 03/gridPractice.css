@@ -1,0 +1,62 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #333;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    height: 800px;
+    width: 800px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+}
+
+.Box {
+    background-color: rgb(53, 53, 228);
+    font-size: 20px;
+}
+
+.First {
+    grid-row: 1/4;
+    background-color: orange;
+}
+
+.Second {
+    grid-column: 2/4;
+    background-color: pink;
+}
+
+.Third {
+    background-color: chartreuse;
+}
+
+.Fourth {
+    background-color: chocolate;
+}
+
+.Fifth {
+    background-color: darkred;
+}
+
+.Sixth {
+    grid-row: 2/4;
+    grid-column: 4/5;
+    background-color: blueviolet;
+}
+
+.Seventh {
+    background-color: yellow;
+}
+
+.Eighth {
+    background-color: brown;
+}

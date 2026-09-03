@@ -1,0 +1,694 @@
+/* ==========================
+   RESET
+========================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    background: black;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* ==========================
+   CONTAINER
+========================== */
+
+.container {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* ==========================
+   STARS
+========================== */
+
+.stars {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image:
+        radial-gradient(white 1px, transparent 1px),
+        radial-gradient(white 1px, transparent 1px),
+        radial-gradient(white 2px, transparent 2px);
+
+    background-size:
+        120px 120px,
+        180px 180px,
+        250px 250px;
+
+    animation: twinkle 6s linear infinite;
+}
+
+@keyframes twinkle {
+
+    0% {
+        opacity: 0.4;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0.4;
+    }
+
+}
+
+/* ==========================
+   SUN
+========================== */
+
+.sun {
+
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    position: absolute;
+
+    background: radial-gradient(circle,
+            yellow,
+            orange,
+            orangered);
+
+    box-shadow:
+        0 0 20px yellow,
+        0 0 40px orange,
+        0 0 80px gold;
+
+    transition: 0.5s;
+}
+
+.sun:hover {
+
+    transform: scale(1.15);
+
+}
+
+/* ==========================
+   COMMON ORBIT
+========================== */
+
+.orbit {
+
+    position: absolute;
+
+    border: 1px solid rgba(255, 255, 255, .2);
+
+    border-radius: 50%;
+
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+
+}
+
+/* ==========================
+   COMMON PLANET
+========================== */
+
+.planet {
+
+    position: absolute;
+
+    top: -12px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    border-radius: 50%;
+
+    transition: 0.5s;
+
+    animation: spin 5s linear infinite;
+
+}
+
+.planet:hover {
+
+    transform: translateX(-50%) scale(1.3);
+
+}
+
+/* ==========================
+   PLANET ROTATION
+========================== */
+
+@keyframes spin {
+
+    from {
+
+        rotate: 0deg;
+
+    }
+
+    to {
+
+        rotate: 360deg;
+
+    }
+
+}
+
+/* ==========================
+   MERCURY
+========================== */
+
+.mercury-orbit {
+
+    width: 140px;
+    height: 140px;
+
+    animation: mercuryMove 5s linear infinite;
+
+}
+
+@keyframes mercuryMove {
+
+    from {
+
+        transform: rotate(0deg);
+
+    }
+
+    to {
+
+        transform: rotate(360deg);
+
+    }
+
+}
+
+.mercury {
+
+    width: 16px;
+    height: 16px;
+
+    background: gray;
+
+}
+
+/* ==========================
+   VENUS
+========================== */
+
+.venus-orbit {
+
+    width: 200px;
+    height: 200px;
+
+    animation: venusMove 8s linear infinite;
+
+}
+
+@keyframes venusMove {
+
+    from {
+
+        transform: rotate(0deg);
+
+    }
+
+    to {
+
+        transform: rotate(360deg);
+
+    }
+
+}
+
+.venus {
+
+    width: 22px;
+    height: 22px;
+
+    background: goldenrod;
+
+}
+
+/* ==========================
+   EARTH
+========================== */
+
+.earth-orbit {
+
+    width: 280px;
+    height: 280px;
+
+    animation: earthMove 12s linear infinite;
+
+}
+
+@keyframes earthMove {
+
+    from {
+
+        transform: rotate(0deg);
+
+    }
+
+    to {
+
+        transform: rotate(360deg);
+
+    }
+
+}
+
+.earth {
+
+    width: 26px;
+    height: 26px;
+
+    background: deepskyblue;
+
+    position: absolute;
+
+    top: -13px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+}
+
+/* ==========================
+   MOON
+========================== */
+
+.moon-orbit {
+
+    width: 55px;
+    height: 55px;
+
+    border: 1px solid rgba(255, 255, 255, .25);
+
+    border-radius: 50%;
+
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    animation: moonMove 3s linear infinite;
+
+}
+
+@keyframes moonMove {
+
+    from {
+
+        transform: translate(-50%, -50%) rotate(0deg);
+
+    }
+
+    to {
+
+        transform: translate(-50%, -50%) rotate(360deg);
+
+    }
+
+}
+
+.moon {
+
+    width: 8px;
+    height: 8px;
+
+    background: white;
+
+    border-radius: 50%;
+
+    position: absolute;
+
+    left: 50%;
+
+    top: -4px;
+
+    transform: translateX(-50%);
+
+}
+
+/* ==========================
+   HOVER EFFECTS
+========================== */
+
+.mercury:hover {
+
+    background: silver;
+
+}
+
+.venus:hover {
+
+    background: orange;
+
+}
+
+.earth:hover {
+
+    background: cyan;
+
+}
+
+.moon:hover {
+
+    transform: translateX(-50%) scale(1.4);
+
+}
+
+/* ==========================
+   MARS
+========================== */
+
+.mars-orbit {
+    width: 360px;
+    height: 360px;
+    animation: marsMove 16s linear infinite;
+}
+
+@keyframes marsMove {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.mars {
+    width: 20px;
+    height: 20px;
+    background: #c1440e;
+}
+
+
+/* ==========================
+   JUPITER
+========================== */
+
+.jupiter-orbit {
+    width: 460px;
+    height: 460px;
+    animation: jupiterMove 22s linear infinite;
+}
+
+@keyframes jupiterMove {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.jupiter {
+    width: 40px;
+    height: 40px;
+    background: #d8a25e;
+}
+
+
+/* ==========================
+   SATURN
+========================== */
+
+.saturn-orbit {
+    width: 570px;
+    height: 570px;
+    animation: saturnMove 28s linear infinite;
+}
+
+@keyframes saturnMove {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.saturn {
+    width: 35px;
+    height: 35px;
+    background: #d6c27a;
+}
+
+/* Saturn Ring */
+
+.ring {
+
+    width: 55px;
+    height: 14px;
+
+    border: 2px solid #ddd;
+
+    border-radius: 50%;
+
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%) rotate(-20deg);
+
+}
+
+
+/* ==========================
+   URANUS
+========================== */
+
+.uranus-orbit {
+    width: 680px;
+    height: 680px;
+    animation: uranusMove 34s linear infinite;
+}
+
+@keyframes uranusMove {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.uranus {
+    width: 30px;
+    height: 30px;
+    background: #74d8f7;
+}
+
+
+/* ==========================
+   NEPTUNE
+========================== */
+
+.neptune-orbit {
+    width: 790px;
+    height: 790px;
+    animation: neptuneMove 40s linear infinite;
+}
+
+@keyframes neptuneMove {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.neptune {
+    width: 28px;
+    height: 28px;
+    background: #2459ff;
+}
+
+
+/* ==========================
+   LABELS
+========================== */
+
+.labels {
+
+    position: absolute;
+
+    width: 100%;
+    height: 100%;
+
+    color: white;
+
+    font-size: 14px;
+
+    pointer-events: none;
+
+}
+
+.label {
+
+    position: absolute;
+
+    transition: 0.3s;
+
+}
+
+.label:hover {
+
+    color: yellow;
+
+    transform: scale(1.1);
+
+}
+
+.mercury-label {
+
+    top: 45%;
+    left: 55%;
+
+}
+
+.venus-label {
+
+    top: 40%;
+    left: 58%;
+
+}
+
+.earth-label {
+
+    top: 36%;
+    left: 61%;
+
+}
+
+.mars-label {
+
+    top: 33%;
+    left: 64%;
+
+}
+
+.jupiter-label {
+
+    top: 30%;
+    left: 67%;
+
+}
+
+.saturn-label {
+
+    top: 27%;
+    left: 70%;
+
+}
+
+.uranus-label {
+
+    top: 24%;
+    left: 73%;
+
+}
+
+.neptune-label {
+
+    top: 21%;
+    left: 76%;
+
+}
+
+
+/* ==========================
+   PLANET HOVER
+========================== */
+
+.mars:hover {
+
+    background: orangered;
+
+    transform: translateX(-50%) scale(1.3);
+
+}
+
+.jupiter:hover {
+
+    background: burlywood;
+
+    transform: translateX(-50%) scale(1.3);
+
+}
+
+.saturn:hover {
+
+    background: khaki;
+
+    transform: translateX(-50%) scale(1.3);
+
+}
+
+.uranus:hover {
+
+    background: cyan;
+
+    transform: translateX(-50%) scale(1.3);
+
+}
+
+.neptune:hover {
+
+    background: dodgerblue;
+
+    transform: translateX(-50%) scale(1.3);
+
+}
+
+
+/* ==========================
+   OPTIONAL SUN ANIMATION
+========================== */
+
+.sun {
+
+    animation: sunGlow 3s ease-in-out infinite alternate;
+
+}
+
+@keyframes sunGlow {
+
+    from {
+
+        box-shadow:
+            0 0 20px yellow,
+            0 0 40px orange,
+            0 0 70px gold;
+
+    }
+
+    to {
+
+        box-shadow:
+            0 0 40px yellow,
+            0 0 70px orange,
+            0 0 120px gold;
+
+    }
+
+}
