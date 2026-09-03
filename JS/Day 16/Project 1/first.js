@@ -1,0 +1,60 @@
+const harveySpecterQuotes = [
+  "I don't have dreams, I have goals.",
+  "When you're backed against the wall, break the goddamn thing down.",
+  "The only time success comes before work is in the dictionary.",
+  "Don't raise your voice, improve your argument.",
+  "I refuse to answer that on the grounds that I don't want to.",
+  "Anyone can do my job, but no one can be me.",
+  "I don't play the odds. I play the man.",
+  "Win a no-win situation by rewriting the rules.",
+  "I don't get lucky. I make my own luck.",
+  "You always have a choice.",
+  "Never destroy anyone in public when you can accomplish the same result in private.",
+  "I don't care what people think about me.",
+  "I don't have time to hate people who hate me.",
+  "You want to change your life? Change the way you think.",
+  "Sometimes good guys gotta do bad things to make the bad guys pay.",
+  "The question isn't what are you willing to do. The question is what are you willing to become.",
+  "Winners don't make excuses when the other side plays the game.",
+  "Never give up. Never back down.",
+  "I'm not interested in great. I'm interested in flawless.",
+  "Loyalty is a two-way street.",
+  "You don't send a puppy to clean up its own mess.",
+  "If they think you care, they'll walk all over you.",
+  "Don't let people tell you who you are.",
+  "You don't need everybody to believe in you. You just need one person.",
+  "I don't have to prove anything to anyone.",
+  "Success isn't about making the right choice. It's about making the choice right.",
+  "Work until you no longer have to introduce yourself.",
+  "You know who cries the hardest at the Miss America pageant? The winner.",
+  "I don't settle. I win.",
+  "When you know what you want, you don't need to explain yourself.",
+  "It's not a problem unless you make it one.",
+  "I don't react to threats. I respond to opportunities.",
+  "Sometimes the best solution is the simplest one.",
+  "Respect is earned, not given.",
+  "You don't get to where I am by being afraid to take a risk.",
+  "I don't need luck when I have preparation.",
+  "You don't become successful by being afraid of failure.",
+  "I don't lose. I win, or I learn.",
+  "The only thing standing between you and your goal is the story you keep telling yourself.",
+  "Confidence isn't knowing they'll like you. It's knowing you'll be fine if they don't.",
+  "You can't win if you're afraid to lose.",
+  "You don't get what you deserve. You get what you fight for.",
+  "Make people believe in you, and they'll follow you anywhere.",
+  "Success is about focus, discipline, and execution.",
+  "I don't chase people. I attract them.",
+  "Your biggest problem is that you're afraid to make a decision.",
+  "Sometimes you have to do what's right, even if it costs you everything.",
+  "The difference between you and me is that I know I can win.",
+  "You don't need permission to be successful.",
+  "Excuses are the nails used to build a house of failure."
+];
+
+const button = document.querySelector('button');
+const quote = document.querySelector('h1');
+
+button.addEventListener('click', ()=> {
+    const index= Math.floor(Math.random()*30);
+    quote.textContent = harveySpecterQuotes[index];
+})
