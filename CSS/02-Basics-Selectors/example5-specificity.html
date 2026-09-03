@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>CSS Specificity Examples</title>
+    <style>
+        /* 1 point - Element selector */
+        p {
+            color: blue;
+        }
+
+        /* 10 points - Class selector (wins against element) */
+        .highlight {
+            color: red;
+        }
+
+        /* 100 points - ID selector (wins against class) */
+        #special {
+            color: green;
+        }
+
+        /* Cascade - Last one wins if same specificity */
+        .demo {
+            font-size: 14px;
+        }
+
+        .demo {
+            font-size: 16px;
+            /* This wins */
+        }
+
+        /* Combining selectors increases specificity */
+        div.container p {
+            color: purple;
+            /* More specific than just p */
+        }
+    </style>
+</head>
+
+<body>
+    <h1>CSS Specificity Examples</h1>
+
+    <p>This paragraph is blue (element selector: 1 point)</p>
+
+    <p class="highlight">
+        This paragraph is red (class selector: 10 points - overrides element)
+    </p>
+
+    <p id="special">
+        This paragraph is green (ID selector: 100 points - overrides class)
+    </p>
+
+    <p style="color: orange;">
+        This paragraph is orange (inline style: 1000 points - overrides everything except !important)
+    </p>
+
+    <h2>Specificity Table</h2>
+    <table border="1">
+        <tr>
+            <th>Selector Type</th>
+            <th>Specificity Points</th>
+            <th>Example</th>
+        </tr>
+        <tr>
+            <td>Element</td>
+            <td>1</td>
+            <td>p { }</td>
+        </tr>
+        <tr>
+            <td>Class</td>
+            <td>10</td>
+            <td>.highlight { }</td>
+        </tr>
+        <tr>
+            <td>ID</td>
+            <td>100</td>
+            <td>#main { }</td>
+        </tr>
+        <tr>
+            <td>Inline</td>
+            <td>1000</td>
+            <td>style="color:red;"</td>
+        </tr>
+    </table>
+
+    <h2>Specificity Rules</h2>
+    <ul>
+        <li>Higher specificity wins over lower specificity</li>
+        <li>If same specificity, last rule wins (cascade)</li>
+        <li>!important overrides everything (avoid using)</li>
+        <li>Inline styles beat all external CSS</li>
+    </ul>
+
+    <div class="container">
+        <p>This demonstrates combined selector specificity</p>
+    </div>
+</body>
+
+</html>

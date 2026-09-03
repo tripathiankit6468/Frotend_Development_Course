@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>HTML Attributes Examples</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <h1>Understanding HTML Attributes</h1>
+
+    <p>Attributes provide additional information about HTML elements. They always go in the opening tag.</p>
+
+    <h2>General Attribute Syntax</h2>
+    <pre>&lt;tag attribute="value"&gt;Content&lt;/tag&gt;</pre>
+
+    <hr>
+
+    <h2>1. Common Attributes</h2>
+
+    <h3>id Attribute - Unique Identifier</h3>
+    <div id="main-section">
+        <p>This div has id="main-section". Each id should be unique on a page.</p>
+    </div>
+
+    <h3>class Attribute - Styling & Grouping</h3>
+    <p class="highlight">This paragraph has class="highlight"</p>
+    <p class="highlight">Multiple elements can have the same class</p>
+    <div class="card highlight">
+        <p>You can have multiple classes: &lt;div class="card highlight"&gt;</p>
+    </div>
+
+    <h3>title Attribute - Tooltip</h3>
+    <p title="This is a tooltip">Hover over this text to see a tooltip</p>
+
+    <h3>style Attribute - Inline CSS</h3>
+    <p style="color: blue; font-size: 18px;">This text is blue and larger (inline style)</p>
+
+    <hr>
+
+    <h2>2. Link Attributes</h2>
+
+    <h3>href - Hyperlink Reference</h3>
+    <a href="https://www.google.com">Link to Google</a><br>
+    <a href="./example1-doctype.html">Link to local file</a><br>
+    <a href="https://www.github.com" target="_blank">Opens in new tab</a><br>
+    <a href="#bottom">Jump to bottom</a>
+
+    <h3>target Attribute</h3>
+    <ul>
+        <li><code>_blank</code> - Opens in new tab</li>
+        <li><code>_self</code> - Opens in same tab (default)</li>
+        <li><code>_parent</code> - Opens in parent frame</li>
+        <li><code>_top</code> - Opens in full body</li>
+    </ul>
+
+    <hr>
+
+    <h2>3. Image Attributes</h2>
+
+    <h3>src - Source</h3>
+    <p>The src attribute specifies the path to the image file.</p>
+
+    <h3>alt - Alternative Text</h3>
+    <p>If image doesn't load, alt text is displayed. Important for SEO and accessibility.</p>
+
+    <h3>width & height</h3>
+    <p>These attributes control the image size in pixels.</p>
+
+    <hr>
+
+    <h2>4. Form Attributes</h2>
+
+    <h3>type Attribute</h3>
+    <input type="text" placeholder="Text input">
+    <input type="email" placeholder="Email input">
+    <input type="password" placeholder="Password">
+    <input type="number" placeholder="Number">
+    <input type="date" placeholder="Date">
+    <input type="color" placeholder="Color picker">
+    <input type="range" min="0" max="100">
+
+    <h3>placeholder Attribute</h3>
+    <input type="text" placeholder="Enter your name here">
+
+    <h3>required Attribute</h3>
+    <input type="text" placeholder="This field is required" required>
+
+    <h3>disabled Attribute</h3>
+    <input type="text" value="This is disabled" disabled>
+
+    <h3>readonly Attribute</h3>
+    <input type="text" value="You cannot change this" readonly>
+
+    <h3>value Attribute</h3>
+    <input type="text" value="Pre-filled value">
+
+    <hr>
+
+    <h2>5. Data Attributes (Custom Attributes)</h2>
+
+    <p>You can create custom attributes using data-* format:</p>
+
+    <div data-category="tutorial" data-id="101">
+        <p>This div has custom attributes: data-category and data-id</p>
+        <p>Used for storing custom data accessible via JavaScript</p>
+    </div>
+
+    <hr>
+
+    <h2>6. Global Attributes (Work on Any Tag)</h2>
+
+    <table border="1">
+        <tr>
+            <th>Attribute</th>
+            <th>Purpose</th>
+            <th>Example</th>
+        </tr>
+        <tr>
+            <td>class</td>
+            <td>CSS class name</td>
+            <td>&lt;p class="intro"&gt;</td>
+        </tr>
+        <tr>
+            <td>id</td>
+            <td>Unique identifier</td>
+            <td>&lt;div id="header"&gt;</td>
+        </tr>
+        <tr>
+            <td>style</td>
+            <td>Inline CSS</td>
+            <td>&lt;p style="color:red;"&gt;</td>
+        </tr>
+        <tr>
+            <td>title</td>
+            <td>Tooltip text</td>
+            <td>&lt;p title="Tooltip"&gt;</td>
+        </tr>
+        <tr>
+            <td>lang</td>
+            <td>Language code</td>
+            <td>&lt;html lang="en"&gt;</td>
+        </tr>
+        <tr>
+            <td>data-*</td>
+            <td>Custom data</td>
+            <td>&lt;div data-user="123"&gt;</td>
+        </tr>
+    </table>
+
+    <hr>
+
+    <h2>Important Notes</h2>
+    <ul>
+        <li>Attribute names are case-insensitive (but lowercase is standard)</li>
+        <li>Always quote attribute values: <code>attr="value"</code></li>
+        <li>Some attributes don't need values: <code>disabled</code>, <code>required</code></li>
+        <li>Order of attributes doesn't matter</li>
+        <li>Different tags have different valid attributes</li>
+    </ul>
+
+    <hr>
+    <p id="bottom">&copy; 2024 - HTML Attributes Guide</p>
+</body>
+
+</html>

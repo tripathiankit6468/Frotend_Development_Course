@@ -1,0 +1,62 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: Georgia, serif;
+    color: #20252b;
+    background: #e5e0ef;
+}
+
+.container {
+    width: min(680px, calc(100% - 2rem));
+    margin: 0 auto;
+    padding: 4rem 0;
+}
+
+h1 {
+    margin: 0 0 1rem;
+    font-size: clamp(2.5rem, 8vw, 4.5rem);
+    line-height: .95;
+}
+
+label,
+textarea,
+button {
+    display: block;
+    margin-top: 1rem;
+}
+
+textarea {
+    width: 100%;
+    min-height: 8rem;
+    padding: .75rem;
+    font: inherit;
+}
+
+button {
+    padding: .75rem 1rem;
+    color: #fff;
+    background: #5b496f;
+    border: 0;
+    cursor: pointer;
+    font: inherit;
+}
+
+button:hover,
+button:focus-visible {
+    background: #bf563e;
+}
+
+#message {
+    padding: 1rem;
+    background: #fff;
+    border-left: 4px solid #bf563e;
+}
+
+li {
+    margin-top: .5rem;
+    cursor: pointer;
+}

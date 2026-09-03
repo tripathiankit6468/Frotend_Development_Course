@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Basics & Selectors</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="selectors.css">
+</head>
+
+<body>
+    <header class="main-header">
+        <h1>CSS Basics & Selectors</h1>
+        <p class="tagline">Learn how to style HTML with CSS</p>
+    </header>
+
+    <main>
+        <section id="what-is-css">
+            <h2>What is CSS?</h2>
+            <p class="intro-text">
+                CSS (Cascading Style Sheets) is used to style and layout web pages.
+                It controls colors, fonts, spacing, positioning, and animations.
+            </p>
+        </section>
+
+        <section>
+            <h2>CSS Syntax</h2>
+            <div class="code-example">
+                <code>
+                    selector {<br>
+                    &nbsp;&nbsp;property: value;<br>
+                    }
+                </code>
+            </div>
+            <p>A CSS rule consists of a selector and one or more declarations.</p>
+        </section>
+
+        <section>
+            <h2>Selector Types</h2>
+
+            <h3>1. Element Selector</h3>
+            <p class="element-example">This paragraph uses element selector styling</p>
+
+            <h3>2. Class Selector</h3>
+            <p class="class-example">This paragraph has a class: "class-example"</p>
+
+            <h3>3. ID Selector</h3>
+            <p id="id-example">This paragraph has an ID: "id-example"</p>
+
+            <h3>4. Group Selector</h3>
+            <h4 class="important">All headings and paragraphs with class "important" are styled the same</h4>
+            <p class="important">This paragraph is also styled</p>
+
+            <h3>5. Attribute Selector</h3>
+            <input type="text" placeholder="Text input - styled by [type='text']">
+            <input type="email" placeholder="Email input - styled by [type='email']">
+        </section>
+
+        <section>
+            <h2>Pseudo-classes</h2>
+            <p>Pseudo-classes style elements in specific states</p>
+
+            <a href="#" class="link-example">Hover over me!</a><br><br>
+
+            <button class="button-example">Click me</button>
+
+            <h3>:first-child and :last-child</h3>
+            <ul class="special-list">
+                <li>First item</li>
+                <li>Middle item</li>
+                <li>Last item</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Box Model</h2>
+            <div class="box-demo">
+                <p>This box demonstrates margin, border, padding, and content</p>
+            </div>
+            <p class="explanation">
+                Notice the space between the blue border and the text (padding),
+                and the space between the border and the edge (margin).
+            </p>
+        </section>
+
+        <section>
+            <h2>CSS Specificity</h2>
+
+            <p id="specificity-demo" class="demo-class">
+                This paragraph shows specificity. ID selector wins!
+            </p>
+
+            <h3>Specificity Points:</h3>
+            <ul>
+                <li>Element selector: 1 point</li>
+                <li>Class selector: 10 points</li>
+                <li>ID selector: 100 points</li>
+                <li>Inline style: 1000 points</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Colors & Fonts</h2>
+
+            <h3>Text Colors</h3>
+            <p class="color-hex">Hex color: #FF5733</p>
+            <p class="color-rgb">RGB color: rgb(100, 200, 50)</p>
+            <p class="color-named">Named color: darkblue</p>
+
+            <h3>Font Styles</h3>
+            <p class="font-style-demo">
+                <strong>Bold text</strong> and <em>italic text</em>
+            </p>
+            <p class="font-weight-demo">Font weights: Light, Normal, Bold, Extra Bold</p>
+        </section>
+
+        <section>
+            <h2>Display Property</h2>
+
+            <h3>Block Elements (take full width)</h3>
+            <div class="block-demo">Block element 1</div>
+            <div class="block-demo">Block element 2</div>
+
+            <h3>Inline Elements (only take needed width)</h3>
+            <span class="inline-demo">Inline 1</span>
+            <span class="inline-demo">Inline 2</span>
+            <span class="inline-demo">Inline 3</span>
+        </section>
+
+        <section>
+            <h2>Gradients</h2>
+            <div class="gradient-demo">
+                <p>Linear Gradient Background</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <p>&copy; 2024 CSS Learning Course. Master the styling!</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

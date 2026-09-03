@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events and Event Handling</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <main class="container">
+        <h1>Events & Event Handling</h1>
+        <form id="feedback-form">
+            <label for="feedback">Your feedback</label>
+            <textarea id="feedback" required></textarea>
+            <button type="submit">Send feedback</button>
+        </form>
+        <p id="message" aria-live="polite">Submit the form to see an event object in action.</p>
+        <ul id="event-log"></ul>
+    </main>
+    <script src="script.js"></script>
+</body>
+
+</html>

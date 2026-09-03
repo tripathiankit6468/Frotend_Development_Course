@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>HTML Nesting Examples</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <h1>Understanding HTML Nesting</h1>
+
+    <p>Nesting means putting one tag inside another. Like Russian dolls, tags must be opened and closed in the correct
+        order.</p>
+
+    <h2>✅ CORRECT Nesting</h2>
+    <p>
+        Tags closed in <strong>reverse order</strong> of how they were opened.
+    </p>
+
+    <div class="example">
+        <h3>Example 1: Correct Nesting</h3>
+        <p>
+            &lt;div&gt;<br>
+            &nbsp;&nbsp;&lt;p&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;Text <strong>bold</strong><br>
+            &nbsp;&nbsp;&lt;/p&gt;<br>
+            &lt;/div&gt;
+        </p>
+
+        <p>This is <strong>correct</strong> because &lt;strong&gt; is closed before &lt;p&gt;.</p>
+    </div>
+
+    <h2>❌ INCORRECT Nesting</h2>
+    <div class="example">
+        <h3>Example 2: Wrong Nesting</h3>
+        <p>
+            &lt;p&gt;<br>
+            &nbsp;&nbsp;Text <strong>bold<br>
+                &lt;/p&gt;<br>
+                &lt;/strong&gt;
+        </p>
+        <p>This is <strong style="color: red;">WRONG</strong> because tags overlap incorrectly.</p>
+    </div>
+
+    <h2>Real-World Nesting Examples</h2>
+
+    <h3>Example 3: List with Links</h3>
+    <ul>
+        <li>
+            <a href="https://www.google.com">Google</a>
+        </li>
+        <li>
+            <a href="https://www.github.com">GitHub</a>
+        </li>
+        <li>
+            Navigation
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </li>
+    </ul>
+
+    <h3>Example 4: Complex Structure</h3>
+    <div class="card">
+        <h4>Article Title</h4>
+        <p>
+            Article content with <strong>bold</strong> and <em>italic</em> text.
+            You can also include <code>code snippets</code>.
+        </p>
+        <button onclick="alert('You clicked the button!')">Read More</button>
+    </div>
+
+    <h3>Example 5: Table with Nested Structure</h3>
+    <table border="1">
+        <tr>
+            <th>Name</th>
+            <th>Skills</th>
+        </tr>
+        <tr>
+            <td>John</td>
+            <td>
+                <ul>
+                    <li>HTML</li>
+                    <li>CSS</li>
+                    <li>JavaScript</li>
+                </ul>
+            </td>
+        </tr>
+    </table>
+
+    <h2>Indentation Best Practice</h2>
+    <p>Always indent nested tags for readability (use 2 or 4 spaces):</p>
+
+    <pre>
+&lt;div&gt;
+  &lt;section&gt;
+    &lt;h2&gt;Heading&lt;/h2&gt;
+    &lt;p&gt;Paragraph&lt;/p&gt;
+  &lt;/section&gt;
+&lt;/div&gt;
+    </pre>
+
+    <h2>Key Rules</h2>
+    <ul>
+        <li>Open tags from outside to inside</li>
+        <li>Close tags from inside to outside (reverse order)</li>
+        <li>Properly indent for readability</li>
+        <li>Don't skip closing tags</li>
+        <li>Use validation tools to check your HTML</li>
+    </ul>
+</body>
+
+</html>

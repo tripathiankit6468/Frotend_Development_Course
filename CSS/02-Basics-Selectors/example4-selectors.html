@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>CSS Selectors Examples</title>
+    <link rel="stylesheet" href="selectors.css">
+</head>
+
+<body>
+    <h1>CSS Selectors - Complete Guide</h1>
+
+    <h2>1. Element Selector</h2>
+    <p class="selector-demo">All paragraphs are styled the same way</p>
+    <p class="selector-demo">This is another paragraph with element selector</p>
+
+    <h2>2. Class Selector</h2>
+    <p class="highlight">This has class "highlight"</p>
+    <div class="highlight">This div also has class "highlight"</div>
+
+    <h2>3. ID Selector</h2>
+    <p id="unique">This is a unique paragraph with ID</p>
+
+    <h2>4. Group Selector</h2>
+    <p class="group-demo">Paragraph with group selector</p>
+    <div class="group-demo">Div with group selector</div>
+    <span class="group-demo">Span with group selector</span>
+
+    <h2>5. Descendant Selector</h2>
+    <div class="parent">
+        <p>This paragraph is a descendant of parent div</p>
+        <span>
+            <p>This paragraph is also a descendant</p>
+        </span>
+    </div>
+
+    <h2>6. Child Selector</h2>
+    <div class="parent-child">
+        <p>Direct child paragraph</p>
+        <span>
+            <p>This is NOT a direct child (grandchild)</p>
+        </span>
+    </div>
+
+    <h2>7. Attribute Selector</h2>
+    <input type="text" placeholder="Text input">
+    <input type="email" placeholder="Email input">
+    <input type="password" placeholder="Password input">
+    <input type="submit" value="Submit button">
+
+    <h2>8. Pseudo-class Selector</h2>
+    <a href="#">Hover over this link</a>
+
+    <h2>9. Pseudo-element Selector</h2>
+    <p class="first-letter-demo">This paragraph's first letter is styled specially.</p>
+
+    <h2>10. Universal Selector</h2>
+    <p>All elements are affected by * selector</p>
+    <div>This div is also affected</div>
+    <span>This span too</span>
+
+    <h2>11. Combining Multiple Selectors</h2>
+    <div class="container">
+        <p class="text">Styled with multiple criteria</p>
+    </div>
+
+    <h2>12. :nth-child Selector</h2>
+    <ul class="list-demo">
+        <li>First item</li>
+        <li>Second item (styled differently)</li>
+        <li>Third item</li>
+        <li>Fourth item (styled differently)</li>
+        <li>Fifth item</li>
+    </ul>
+</body>
+
+</html>
