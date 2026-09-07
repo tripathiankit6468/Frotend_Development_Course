@@ -1,24 +1,21 @@
-document.addEventListener("click", function (event) {
+const body = document.querySelector('body');
 
-    // Create bubble
-    const bubble = document.createElement("div");
+body.addEventListener('click', (e) => {
+    console.log(e.clientX, e.clientY);
 
-    // Add class
-    bubble.classList.add("bubble");
+    const circleElement = document.createElement('div');
+    circleElement.classList.add('circle');
+    circleElement.textContent = "Hii";
 
-    // Add text
-    bubble.textContent = "Hello, Ankit Tripathi";
+    const color = ['#FF5733', '#33FF57', '#3357FF', '#F333FF', '#33FFF5', '#F5FF33', '#FF33A8', '#A833FF', '#33FFA8', '#FFA833'];
+    circleElement.style.backgroundColor = color[Math.floor(Math.random() * color.length)];
 
-    // Position bubble where user clicked
-    bubble.style.left = event.clientX + "px";
-    bubble.style.top = event.clientY + "px";
+    circleElement.style.left = `${e.clientX -25}px`;
+    circleElement.style.top = `${e.clientY -25}px`;
+    body.append(circleElement);
 
-    // Add bubble to body
-    document.body.appendChild(bubble);
+    setTimeout(() => {
+        circleElement.remove();
+    },5000);
 
-    // Remove bubble after animation
-    setTimeout(function () {
-        bubble.remove();
-    }, 1500);
-
-});
+}) 
