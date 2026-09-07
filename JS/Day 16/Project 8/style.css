@@ -1,0 +1,188 @@
+/* ==============================
+   RESET
+================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* ==============================
+   BODY
+================================= */
+
+body {
+    width: 100%;
+    height: 100vh;
+
+    overflow: hidden;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    background: linear-gradient(135deg,
+            #141e30,
+            #243b55);
+
+    color: white;
+
+    cursor: pointer;
+}
+
+
+/* ==============================
+   MAIN CONTENT
+================================= */
+
+.container {
+    width: 100%;
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    pointer-events: none;
+
+    user-select: none;
+}
+
+.container h1 {
+    font-size: 42px;
+    font-weight: 700;
+
+    margin-bottom: 12px;
+
+    letter-spacing: 1px;
+}
+
+.container p {
+    font-size: 18px;
+
+    opacity: 0.8;
+}
+
+
+/* ==============================
+   BUBBLE
+================================= */
+
+.bubble {
+    position: fixed;
+
+    width: 150px;
+    height: 150px;
+
+    border-radius: 50%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    padding: 20px;
+
+    color: white;
+
+    font-size: 16px;
+    font-weight: 600;
+
+    line-height: 1.4;
+
+    background: linear-gradient(135deg,
+            #00c6ff,
+            #0072ff);
+
+    /* Position is controlled from JavaScript */
+    transform: translate(-50%, -50%) scale(0);
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    user-select: none;
+
+    /* Smooth shadow */
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.30),
+        inset 0 0 20px rgba(255, 255, 255, 0.25);
+
+    /*
+        This is the important part.
+
+        The animation is slow and smooth
+        instead of suddenly appearing/disappearing.
+    */
+
+    animation: bubbleAppear 2.2s cubic-bezier(0.22,
+            1,
+            0.36,
+            1) forwards;
+}
+
+
+/* ==============================
+   BUBBLE ANIMATION
+================================= */
+
+@keyframes bubbleAppear {
+
+    /* Starting point */
+    0% {
+        opacity: 0;
+
+        transform:
+            translate(-50%, -50%) scale(0.2);
+    }
+
+
+    /* Bubble smoothly appears */
+    20% {
+        opacity: 0.7;
+
+        transform:
+            translate(-50%, -50%) scale(0.85);
+    }
+
+
+    /* Fully visible */
+    40% {
+        opacity: 1;
+
+        transform:
+            translate(-50%, -50%) scale(1);
+    }
+
+
+    /* Stay visible */
+    65% {
+        opacity: 1;
+
+        transform:
+            translate(-50%, -55%) scale(1);
+    }
+
+
+    /* Start floating upward */
+    82% {
+        opacity: 0.7;
+
+        transform:
+            translate(-50%, -70%) scale(1.05);
+    }
+
+
+    /* Smoothly disappear */
+    100% {
+        opacity: 0;
+
+        transform:
+            translate(-50%, -90%) scale(1.15);
+    }
+}
