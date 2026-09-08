@@ -1,0 +1,1010 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>JavaScript Event Loop</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #111827;
+            color: white;
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .intro {
+            text-align: center;
+            color: #cbd5e1;
+            margin-bottom: 30px;
+        }
+
+        .card {
+            background: #1f2937;
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+
+        .card h2 {
+            margin-bottom: 12px;
+        }
+
+        .card p {
+            line-height: 1.6;
+            color: #d1d5db;
+        }
+
+        button {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 15px;
+        }
+
+        #eventButton {
+            background: #2563eb;
+            color: white;
+        }
+
+        #eventButton:hover {
+            background: #1d4ed8;
+        }
+
+        #runButton {
+            background: #16a34a;
+            color: white;
+        }
+
+        #runButton:hover {
+            background: #15803d;
+        }
+
+        #output {
+            background: #000;
+            color: #22c55e;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            min-height: 200px;
+            white-space: pre-line;
+            font-family: monospace;
+        }
+
+        .important {
+            color: #fbbf24;
+            font-weight: bold;
+        }
+
+        code {
+            background: #111827;
+            padding: 3px 6px;
+            border-radius: 4px;
+            color: #93c5fd;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>JavaScript Event Loop</h1>
+
+        <p class="intro">
+            Single-Threaded + Synchronous + Asynchronous JavaScript
+        </p>
+
+
+        <!-- =====================================================
+             1. SINGLE THREADED JAVASCRIPT
+        ====================================================== -->
+
+        <div class="card">
+
+            <h2>1. JavaScript is Single-Threaded</h2>
+
+            <p>
+                JavaScript has one main execution thread and one main
+                Call Stack. Therefore, JavaScript executes one piece
+                of JavaScript code at a time.
+            </p>
+
+            <p>
+                Think of it like a cashier serving one customer at a time.
+            </p>
+
+        </div>
+
+
+        <!-- =====================================================
+             2. SYNCHRONOUS JAVASCRIPT
+        ====================================================== -->
+
+        <div class="card">
+
+            <h2>2. Synchronous Execution</h2>
+
+            <p>
+                Synchronous means that JavaScript executes statements
+                one after another. The next statement waits until
+                the previous statement finishes.
+            </p>
+
+            <button id="runButton">
+                Run Event Loop Example
+            </button>
+
+        </div>
+
+
+        <!-- =====================================================
+             3. DOM EVENT
+        ====================================================== -->
+
+        <div class="card">
+
+            <h2>3. DOM Event</h2>
+
+            <p>
+                Click the button below. The browser detects the click
+                and eventually executes the callback through the
+                Event Loop.
+            </p>
+
+            <button id="eventButton">
+                Click Me
+            </button>
+
+        </div>
+
+
+        <!-- =====================================================
+             4. OUTPUT
+        ====================================================== -->
+
+        <div class="card">
+
+            <h2>Console Output</h2>
+
+            <div id="output">
+                Click "Run Event Loop Example" and check this output.
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script>
+
+        /*
+        ============================================================
+                    JAVASCRIPT EXECUTION MODEL
+        ============================================================
+
+        JavaScript is generally described as:
+
+        1. Single-threaded
+        2. Synchronous by default
+        3. Event-driven
+        4. Capable of asynchronous behavior through its
+           runtime environment and event loop.
+
+        Important components:
+
+        ------------------------------------------------------------
+
+        Call Stack
+        ----------
+        Executes JavaScript functions.
+
+        Web APIs / Runtime APIs
+        -----------------------
+        Browser/runtime features such as:
+
+        - setTimeout()
+        - DOM events
+        - fetch()
+        - etc.
+
+        Task Queue / Callback Queue
+        ----------------------------
+        Contains callbacks from tasks such as timers and
+        many browser events.
+
+        Microtask Queue
+        ----------------
+        Contains:
+
+        - Promise.then()
+        - Promise.catch()
+        - Promise.finally()
+        - await continuation
+        - queueMicrotask()
+
+        Event Loop
+        ----------
+        Continuously checks whether the Call Stack is empty
+        and coordinates when queued callbacks can execute.
+
+        ============================================================
+        */
+
+
+        /*
+        ============================================================
+                        HELPER FUNCTION
+        ============================================================
+        */
+
+        const output = document.querySelector("#output");
+
+
+        function print(message) {
+
+            /*
+            Add the message to our output box.
+            */
+
+            output.textContent += "\n" + message;
+
+            /*
+            Also print the message in the browser console.
+            */
+
+            console.log(message);
+        }
+
+
+        /*
+        ============================================================
+                    1. SYNCHRONOUS CODE
+        ============================================================
+
+        JavaScript executes normal code synchronously.
+
+        Example:
+
+        console.log("A");
+        console.log("B");
+        console.log("C");
+
+        Output:
+
+        A
+        B
+        C
+
+        ============================================================
+        */
+
+
+        function synchronousExample() {
+
+            print("Synchronous: A");
+
+            print("Synchronous: B");
+
+            print("Synchronous: C");
+        }
+
+
+        /*
+        ============================================================
+                    2. CALL STACK
+        ============================================================
+
+        The Call Stack keeps track of functions that are currently
+        being executed.
+
+        Example:
+
+        function one() {
+            console.log("One");
+        }
+
+        function two() {
+            one();
+        }
+
+        two();
+
+        Execution:
+
+        two()
+          ↓
+        one()
+          ↓
+        console.log()
+
+        The Call Stack follows:
+
+        LIFO = Last In, First Out
+
+        ============================================================
+        */
+
+
+        function firstFunction() {
+
+            print("Call Stack: firstFunction()");
+
+        }
+
+
+        function secondFunction() {
+
+            /*
+            secondFunction() is placed on the Call Stack.
+
+            Then it calls firstFunction().
+
+            firstFunction() gets placed on top of the stack.
+            */
+
+            firstFunction();
+
+            print("Call Stack: secondFunction()");
+
+        }
+
+
+        /*
+        ============================================================
+                    3. setTimeout()
+        ============================================================
+
+        IMPORTANT:
+
+        setTimeout() does NOT block JavaScript for the specified
+        amount of time.
+
+        Example:
+
+        setTimeout(() => {
+            console.log("Timer");
+        }, 2000);
+
+        The browser/runtime handles the timer.
+
+        JavaScript continues executing other code.
+
+        When the timer becomes eligible, its callback is placed
+        into the task queue.
+
+        The callback can execute only when the Call Stack is
+        available.
+
+        ============================================================
+        */
+
+
+        function timerExample() {
+
+            print("Before setTimeout()");
+
+
+            setTimeout(function () {
+
+                /*
+                This callback does not execute immediately.
+
+                It will execute later through the event loop.
+                */
+
+                print("setTimeout callback");
+
+            }, 0);
+
+
+            print("After setTimeout()");
+        }
+
+
+        /*
+        ============================================================
+                    4. PROMISE / MICROTASK QUEUE
+        ============================================================
+
+        Promise callbacks are placed in the Microtask Queue.
+
+        Microtasks have priority over normal task/callback queue
+        callbacks after the current synchronous execution completes.
+
+        Example:
+
+        Promise.resolve().then(() => {
+            console.log("Promise");
+        });
+
+        ============================================================
+        */
+
+
+        function promiseExample() {
+
+            Promise.resolve().then(function () {
+
+                /*
+                This callback goes to the Microtask Queue.
+                */
+
+                print("Promise callback / Microtask");
+
+            });
+
+        }
+
+
+        /*
+        ============================================================
+                    5. DOM EVENT
+        ============================================================
+
+        addEventListener() registers an event handler.
+
+        The browser waits for the user to perform an action.
+
+        Example:
+
+        button.addEventListener("click", function() {
+
+            console.log("Button clicked");
+
+        });
+
+        When the user clicks:
+
+        User
+          ↓
+        Browser detects event
+          ↓
+        Event callback becomes eligible
+          ↓
+        Task/Event Queue
+          ↓
+        Event Loop
+          ↓
+        Call Stack
+          ↓
+        Callback executes
+
+        ============================================================
+        */
+
+
+        const eventButton = document.querySelector("#eventButton");
+
+
+        eventButton.addEventListener("click", function () {
+
+            /*
+            This function executes when the user clicks
+            the button.
+
+            The browser handles the actual event detection.
+            */
+
+            print("DOM Event: Button clicked");
+
+        });
+
+
+        /*
+        ============================================================
+                    6. ASYNC / AWAIT
+        ============================================================
+
+        async/await is built on top of Promises.
+
+        When JavaScript reaches await, execution of the async
+        function pauses until the awaited Promise settles.
+
+        The continuation after await is scheduled as a microtask.
+
+        ============================================================
+        */
+
+
+        async function asyncAwaitExample() {
+
+            print("Async function: Before await");
+
+
+            /*
+            Promise.resolve() creates an already-resolved Promise.
+
+            await pauses this async function.
+
+            The code after await will continue asynchronously.
+            */
+
+            await Promise.resolve();
+
+
+            print("Async function: After await");
+
+        }
+
+
+        /*
+        ============================================================
+                    7. COMPLETE EVENT LOOP EXAMPLE
+        ============================================================
+
+        This is the most important example.
+
+        Code:
+
+        console.log("1");
+
+        setTimeout(() => {
+            console.log("2");
+        }, 0);
+
+        Promise.resolve().then(() => {
+            console.log("3");
+        });
+
+        console.log("4");
+
+        Expected output:
+
+        1
+        4
+        3
+        2
+
+        Why?
+
+        ------------------------------------------------------------
+
+        STEP 1
+        ------
+        console.log("1") executes immediately.
+
+        Output:
+
+        1
+
+        ------------------------------------------------------------
+
+        STEP 2
+        ------
+        setTimeout() registers a timer.
+
+        Its callback will later enter the task queue.
+
+        ------------------------------------------------------------
+
+        STEP 3
+        ------
+        Promise.then() registers a microtask.
+
+        It goes into the Microtask Queue.
+
+        ------------------------------------------------------------
+
+        STEP 4
+        ------
+        console.log("4") executes synchronously.
+
+        Output:
+
+        1
+        4
+
+        ------------------------------------------------------------
+
+        STEP 5
+        ------
+        Synchronous execution is complete.
+
+        Event Loop processes microtasks first.
+
+        Promise callback executes.
+
+        Output:
+
+        1
+        4
+        3
+
+        ------------------------------------------------------------
+
+        STEP 6
+        ------
+        Then the task queue callback executes.
+
+        Output:
+
+        1
+        4
+        3
+        2
+
+        ============================================================
+        */
+
+
+        function completeEventLoopExample() {
+
+            print("1 - Synchronous code");
+
+
+            /*
+            setTimeout callback goes to the TASK QUEUE
+            after the timer becomes eligible.
+            */
+
+            setTimeout(function () {
+
+                print("2 - setTimeout / Task Queue");
+
+            }, 0);
+
+
+            /*
+            Promise callback goes to the MICROTASK QUEUE.
+            */
+
+            Promise.resolve().then(function () {
+
+                print("3 - Promise / Microtask Queue");
+
+            });
+
+
+            /*
+            This is synchronous.
+
+            Therefore it executes before the Promise callback
+            and setTimeout callback.
+            */
+
+            print("4 - Synchronous code");
+
+        }
+
+
+        /*
+        ============================================================
+                    8. COMPLETE EXAMPLE
+        ============================================================
+
+        This function combines:
+
+        - Single-threaded execution
+        - Synchronous execution
+        - Call Stack
+        - setTimeout
+        - Promise
+        - Microtask Queue
+        - Task Queue
+        - Event Loop
+        - async/await
+
+        ============================================================
+        */
+
+
+        async function completeExample() {
+
+            print("");
+            print("========== COMPLETE EXAMPLE ==========");
+
+
+            /*
+            ----------------------------------------------
+            SYNCHRONOUS
+            ----------------------------------------------
+            */
+
+            print("A - Synchronous");
+
+
+            /*
+            ----------------------------------------------
+            TASK QUEUE
+            ----------------------------------------------
+
+            setTimeout callback will eventually enter
+            the Task Queue.
+            */
+
+            setTimeout(function () {
+
+                print("B - setTimeout / Task Queue");
+
+            }, 0);
+
+
+            /*
+            ----------------------------------------------
+            MICROTASK QUEUE
+            ----------------------------------------------
+
+            Promise.then() callback goes to Microtask Queue.
+            */
+
+            Promise.resolve().then(function () {
+
+                print("C - Promise / Microtask Queue");
+
+            });
+
+
+            /*
+            ----------------------------------------------
+            ASYNC / AWAIT
+            ----------------------------------------------
+            */
+
+            await Promise.resolve();
+
+            /*
+            The async function resumes after await through
+            the microtask mechanism.
+            */
+
+            print("D - After await / Microtask");
+
+
+            /*
+            ----------------------------------------------
+            SYNCHRONOUS
+            ----------------------------------------------
+            */
+
+            print("E - Synchronous after await");
+
+
+            print("========== END ==========");
+
+        }
+
+
+        /*
+        ============================================================
+                    9. RUN BUTTON
+        ============================================================
+        */
+
+
+        const runButton = document.querySelector("#runButton");
+
+
+        runButton.addEventListener("click", function () {
+
+            /*
+            Clear previous output.
+            */
+
+            output.textContent = "";
+
+
+            print("========== START ==========");
+
+
+            /*
+            Demonstrate synchronous execution.
+            */
+
+            synchronousExample();
+
+
+            /*
+            Demonstrate Call Stack.
+            */
+
+            secondFunction();
+
+
+            /*
+            Demonstrate setTimeout.
+            */
+
+            timerExample();
+
+
+            /*
+            Demonstrate Promise / Microtask.
+            */
+
+            promiseExample();
+
+
+            /*
+            Demonstrate async/await.
+            */
+
+            asyncAwaitExample();
+
+
+            /*
+            Demonstrate complete event-loop ordering.
+            */
+
+            completeEventLoopExample();
+
+
+            /*
+            Demonstrate complete combined example.
+            */
+
+            completeExample();
+
+
+            print("========== MAIN CODE FINISHED ==========");
+
+        });
+
+
+        /*
+        ============================================================
+                    10. IMPORTANT EXECUTION ORDER
+        ============================================================
+
+        When JavaScript encounters asynchronous operations,
+        remember this simplified model:
+
+        ------------------------------------------------------------
+
+                     SYNCHRONOUS CODE
+                            ↓
+                     Call Stack executes
+                            ↓
+                     Stack becomes empty
+                            ↓
+                    MICROtask Queue
+                            ↓
+                  Promise / await callbacks
+                            ↓
+                     TASK Queue
+                            ↓
+                 setTimeout / events
+                            ↓
+                     Event Loop
+                            ↓
+                     Call Stack
+
+        ------------------------------------------------------------
+
+        IMPORTANT:
+
+        A timer being "ready" does not mean its callback executes
+        immediately.
+
+        The Call Stack must be available.
+
+        ============================================================
+        */
+
+
+        /*
+        ============================================================
+                    11. SINGLE-THREADED DOES NOT MEAN
+                        "NO ASYNCHRONOUS OPERATIONS"
+        ============================================================
+
+        JavaScript itself executes JavaScript code on its main
+        execution thread one piece at a time.
+
+        However, the runtime environment can provide mechanisms
+        for handling asynchronous operations.
+
+        Browser example:
+
+        JavaScript
+             ↓
+        Browser APIs
+             ↓
+        Timer / DOM Event / Network
+             ↓
+        Queue
+             ↓
+        Event Loop
+             ↓
+        Call Stack
+             ↓
+        JavaScript callback
+
+        ============================================================
+        */
+
+
+        /*
+        ============================================================
+                    12. BLOCKING CODE
+        ============================================================
+
+        A long-running synchronous operation blocks the main
+        JavaScript thread.
+
+        Example:
+
+        for (let i = 0; i < 5000000000; i++) {
+            // long-running operation
+        }
+
+        During this loop, JavaScript cannot execute another
+        JavaScript callback on the same main thread.
+
+        Therefore:
+
+        SINGLE THREAD + LONG SYNCHRONOUS TASK
+                        =
+                   BLOCKING
+
+        ============================================================
+        */
+
+
+        /*
+        ============================================================
+                    FINAL SUMMARY
+        ============================================================
+
+        JavaScript:
+
+        ✔ Has a single main JavaScript execution thread.
+
+        ✔ Executes normal JavaScript synchronously.
+
+        ✔ Uses a Call Stack to execute functions.
+
+        ✔ Uses runtime APIs for asynchronous operations.
+
+        ✔ Uses a Microtask Queue for Promise callbacks and
+          async/await continuations.
+
+        ✔ Uses a Task Queue for tasks such as timers and
+          many browser events.
+
+        ✔ Uses the Event Loop to coordinate queued callbacks
+          with the Call Stack.
+
+        Simplified priority:
+
+        1. Synchronous JavaScript
+        2. Microtasks
+           - Promise.then()
+           - await continuation
+           - queueMicrotask()
+        3. Tasks
+           - setTimeout()
+           - browser events
+           - etc.
+
+        ============================================================
+        */
+
+    </script>
+
+</body>
+
+</html>
+```
